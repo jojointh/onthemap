@@ -13,6 +13,13 @@
 		8DF5A71F1BB93DB400214AC0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A71E1BB93DB400214AC0 /* Images.xcassets */; };
 		8DF5A7221BB93DB400214AC0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A7201BB93DB400214AC0 /* LaunchScreen.xib */; };
 		8DF5A72E1BB93DB400214AC0 /* On_The_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5A72D1BB93DB400214AC0 /* On_The_MapTests.swift */; };
+		8DF5A74C1BB9410A00214AC0 /* list.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A7451BB9410A00214AC0 /* list.pdf */; };
+		8DF5A74D1BB9410A00214AC0 /* map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A7461BB9410A00214AC0 /* map.pdf */; };
+		8DF5A74E1BB9410A00214AC0 /* pin.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A7471BB9410A00214AC0 /* pin.pdf */; };
+		8DF5A74F1BB9410A00214AC0 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A7481BB9410A00214AC0 /* Roboto-Medium.ttf */; };
+		8DF5A7501BB9410A00214AC0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A7491BB9410A00214AC0 /* Roboto-Regular.ttf */; };
+		8DF5A7511BB9410A00214AC0 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A74A1BB9410A00214AC0 /* Roboto-Thin.ttf */; };
+		8DF5A7521BB9410A00214AC0 /* udacity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A74B1BB9410A00214AC0 /* udacity.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,13 @@
 		8DF5A7271BB93DB400214AC0 /* On The MapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The MapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF5A72C1BB93DB400214AC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DF5A72D1BB93DB400214AC0 /* On_The_MapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapTests.swift; sourceTree = "<group>"; };
+		8DF5A7451BB9410A00214AC0 /* list.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = list.pdf; sourceTree = "<group>"; };
+		8DF5A7461BB9410A00214AC0 /* map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = map.pdf; sourceTree = "<group>"; };
+		8DF5A7471BB9410A00214AC0 /* pin.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = pin.pdf; sourceTree = "<group>"; };
+		8DF5A7481BB9410A00214AC0 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		8DF5A7491BB9410A00214AC0 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		8DF5A74A1BB9410A00214AC0 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		8DF5A74B1BB9410A00214AC0 /* udacity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = udacity.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +104,13 @@
 		8DF5A7151BB93DB400214AC0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8DF5A7451BB9410A00214AC0 /* list.pdf */,
+				8DF5A7461BB9410A00214AC0 /* map.pdf */,
+				8DF5A7471BB9410A00214AC0 /* pin.pdf */,
+				8DF5A7481BB9410A00214AC0 /* Roboto-Medium.ttf */,
+				8DF5A7491BB9410A00214AC0 /* Roboto-Regular.ttf */,
+				8DF5A74A1BB9410A00214AC0 /* Roboto-Thin.ttf */,
+				8DF5A74B1BB9410A00214AC0 /* udacity.pdf */,
 				8DF5A7161BB93DB400214AC0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -192,9 +213,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DF5A74E1BB9410A00214AC0 /* pin.pdf in Resources */,
+				8DF5A74D1BB9410A00214AC0 /* map.pdf in Resources */,
+				8DF5A7501BB9410A00214AC0 /* Roboto-Regular.ttf in Resources */,
+				8DF5A74C1BB9410A00214AC0 /* list.pdf in Resources */,
+				8DF5A7521BB9410A00214AC0 /* udacity.pdf in Resources */,
+				8DF5A74F1BB9410A00214AC0 /* Roboto-Medium.ttf in Resources */,
 				8DF5A71D1BB93DB400214AC0 /* Main.storyboard in Resources */,
 				8DF5A7221BB93DB400214AC0 /* LaunchScreen.xib in Resources */,
 				8DF5A71F1BB93DB400214AC0 /* Images.xcassets in Resources */,
+				8DF5A7511BB9410A00214AC0 /* Roboto-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
