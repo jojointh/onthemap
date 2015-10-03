@@ -73,7 +73,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             self.displayAlert("Login Error")
                         }
                     } else {
-                        //TODO: complete login
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.performSegueWithIdentifier("studentLocation", sender: self)
+                        }
                     }
                 }
             }
