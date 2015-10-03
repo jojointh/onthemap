@@ -14,12 +14,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    var tapRecognizer: UITapGestureRecognizer? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        /* Configure tap recognizer */
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer?.numberOfTapsRequired = 1
+        view.addGestureRecognizer(tapRecognizer!)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        view.removeGestureRecognizer(tapRecognizer!)
+    }
+    
+    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
