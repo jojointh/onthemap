@@ -22,6 +22,7 @@
 		8DF5A7521BB9410A00214AC0 /* udacity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5A74B1BB9410A00214AC0 /* udacity.pdf */; };
 		8DF5A7621BBA91D900214AC0 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5A7611BBA91D900214AC0 /* UdacityClient.swift */; };
 		8DF5A7641BBA922C00214AC0 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5A7631BBA922C00214AC0 /* UdacityConstants.swift */; };
+		EB22FB021BC062870096EEF7 /* StudentMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB011BC062870096EEF7 /* StudentMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		8DF5A74B1BB9410A00214AC0 /* udacity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = udacity.pdf; sourceTree = "<group>"; };
 		8DF5A7611BBA91D900214AC0 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		8DF5A7631BBA922C00214AC0 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		EB22FB011BC062870096EEF7 /* StudentMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				8DF5A71E1BB93DB400214AC0 /* Images.xcassets */,
 				8DF5A7201BB93DB400214AC0 /* LaunchScreen.xib */,
 				8DF5A7151BB93DB400214AC0 /* Supporting Files */,
+				EB22FB011BC062870096EEF7 /* StudentMapViewController.swift */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB22FB021BC062870096EEF7 /* StudentMapViewController.swift in Sources */,
 				8DF5A71A1BB93DB400214AC0 /* LoginViewController.swift in Sources */,
 				8DF5A7641BBA922C00214AC0 /* UdacityConstants.swift in Sources */,
 				8DF5A7181BB93DB400214AC0 /* AppDelegate.swift in Sources */,
@@ -469,6 +473,7 @@
 				8DF5A7331BB93DB400214AC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8DF5A7341BB93DB400214AC0 /* Build configuration list for PBXNativeTarget "On The MapTests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +482,7 @@
 				8DF5A7361BB93DB400214AC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

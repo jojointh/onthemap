@@ -248,7 +248,8 @@
         <!--On The Map-->
         <scene sceneID="be6-I7-nqG">
             <objects>
-                <viewController id="uj9-nR-kV1" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSt-gG-rY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="uj9-nR-kV1" customClass="StudentMapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YtM-4e-rFZ"/>
                         <viewControllerLayoutGuide type="bottom" id="4Qd-9y-Pd3"/>
@@ -256,13 +257,26 @@
                     <view key="view" contentMode="scaleToFill" id="tA8-kN-pa9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AEZ-yn-gQv">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AEZ-yn-gQv" firstAttribute="leading" secondItem="tA8-kN-pa9" secondAttribute="leadingMargin" constant="-16" id="ApW-6k-Cof"/>
+                            <constraint firstItem="AEZ-yn-gQv" firstAttribute="top" secondItem="YtM-4e-rFZ" secondAttribute="bottom" id="Gbj-uL-tgZ"/>
+                            <constraint firstItem="4Qd-9y-Pd3" firstAttribute="top" secondItem="AEZ-yn-gQv" secondAttribute="bottom" id="QIs-Rz-OyT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AEZ-yn-gQv" secondAttribute="trailing" constant="-16" id="k2E-eG-39T"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="pXG-CX-v4C">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="fcQ-bM-UqL"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="AEZ-yn-gQv" id="9St-6p-2Z2"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NSt-gG-rY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3578" y="-6"/>
         </scene>
