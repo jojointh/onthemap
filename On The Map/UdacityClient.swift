@@ -38,7 +38,7 @@ class UdacityClient: NSObject {
         let task = session.dataTaskWithRequest(request) {
             data, response, errorRequest in
             if let error = errorRequest {
-                println("something wrong")
+                completionHandler(result: nil, error: error)
             } else {
                 UdacityClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             }
@@ -58,7 +58,8 @@ class UdacityClient: NSObject {
         let parsedResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(newData, options: NSJSONReadingOptions.AllowFragments, error: &parsingError)
         
         if let error = parsingError {
-            completionHandler(result: nil, error: error)
+            let thisError = NSError(domain: "parsingJSON", code: 0, userInfo: [NSLocalizedDescriptionKey : "Invalid data return from server"])
+            completionHandler(result: nil, error: thisError)
         } else {
             completionHandler(result: parsedResult, error: nil)
         }

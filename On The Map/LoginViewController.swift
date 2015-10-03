@@ -42,18 +42,17 @@ class LoginViewController: UIViewController {
                     self.activityIndicator.stopAnimating()
                 }
                 if let error = error {
-                    println(error)
+                    if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
+                        self.displayAlert(error.localizedDescription)
+                    } else {
+                        self.displayAlert("Could not login")
+                    }
                 } else {
-                    println("completed login")
-                    println(result)
                     if let error = result.valueForKey("error") as? String {
-                        
                         if result.valueForKey("status") as? Int == 403 {
-                            let alert = UIAlertController(title: "", message: "Invalid Email or Password.", preferredStyle: .Alert)
-                            alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
-                            dispatch_async(dispatch_get_main_queue()) {
-                                self.presentViewController(alert, animated: true, completion: nil)
-                            }
+                            self.displayAlert("Invalid Email or Password.")
+                        } else {
+                            self.displayAlert("Login Error")
                         }
                     } else {
                         //TODO: complete login
@@ -65,6 +64,14 @@ class LoginViewController: UIViewController {
     
     @IBAction func doSignUp(sender: UIButton) {
         UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signin")!)
+    }
+    
+    func displayAlert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+        dispatch_async(dispatch_get_main_queue()) {
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
 }
 
