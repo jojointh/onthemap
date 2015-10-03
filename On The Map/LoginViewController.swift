@@ -24,16 +24,36 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func doLogin(sender: UIButton) {
-        let postParams = ["udacity":
-            [ "username": emailTextField.text,
-              "password": passwordTextField.text
+        //input should not empty
+        if emailTextField.text.isEmpty || passwordTextField.text.isEmpty {
+            let alert = UIAlertController(title: "", message: "Empty Email or Password.", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+            presentViewController(alert, animated: true, completion: nil)
+        } else {
+            let postParams = ["udacity":
+                [ "username": emailTextField.text,
+                  "password": passwordTextField.text
+                ]
             ]
-        ]
-        let task = UdacityClient.sharedInstance().taskPostRequest(UdacityClient.Methods.UserSession, postParams: postParams) { result, error in
-            if let error = error {
-                
-            } else {
-                //TODO: complete login
+            let task = UdacityClient.sharedInstance().taskPostRequest(UdacityClient.Methods.UserSession, postParams: postParams) { result, error in
+                if let error = error {
+                    println(error)
+                } else {
+                    println("completed login")
+                    println(result)
+                    if let error = result.valueForKey("error") as? String {
+                        
+                        if result.valueForKey("status") as? Int == 403 {
+                            let alert = UIAlertController(title: "", message: "Invalid Email or Password.", preferredStyle: .Alert)
+                            alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.presentViewController(alert, animated: true, completion: nil)
+                            }
+                        }
+                    } else {
+                        //TODO: complete login
+                    }
+                }
             }
         }
     }

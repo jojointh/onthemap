@@ -40,10 +40,7 @@ class UdacityClient: NSObject {
             if let error = errorRequest {
                 println("something wrong")
             } else {
-                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-                var parsingError: NSError? = nil
-                let parsedJSON = NSJSONSerialization.JSONObjectWithData(newData, options: NSJSONReadingOptions.AllowFragments, error: &parsingError) as! NSDictionary
-                println(parsedJSON)
+                UdacityClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
             }
         }
         
@@ -52,5 +49,18 @@ class UdacityClient: NSObject {
         return task
     }
     
-    
+    /* Helper: Given raw JSON, return a usable Foundation object */
+    class func parseJSONWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
+        
+        let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+        var parsingError: NSError? = nil
+        
+        let parsedResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(newData, options: NSJSONReadingOptions.AllowFragments, error: &parsingError)
+        
+        if let error = parsingError {
+            completionHandler(result: nil, error: error)
+        } else {
+            completionHandler(result: parsedResult, error: nil)
+        }
+    }
 }
