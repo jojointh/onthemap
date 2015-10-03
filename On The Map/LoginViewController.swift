@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,16 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
             presentViewController(alert, animated: true, completion: nil)
         } else {
+            activityIndicator.startAnimating()
             let postParams = ["udacity":
                 [ "username": emailTextField.text,
                   "password": passwordTextField.text
                 ]
             ]
             let task = UdacityClient.sharedInstance().taskPostRequest(UdacityClient.Methods.UserSession, postParams: postParams) { result, error in
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.activityIndicator.stopAnimating()
+                }
                 if let error = error {
                     println(error)
                 } else {
