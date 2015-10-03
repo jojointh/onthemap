@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func doSignUp(sender: UIButton) {
-        
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signin")!)
     }
 }
 
