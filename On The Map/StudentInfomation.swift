@@ -8,11 +8,19 @@
 
 import Foundation
 
-struct StudentLocation {
+struct StudentInformation {
 
     var firstName: String
     var lastName: String
     var mediaURL: String
     var latitude: Float
     var longitude: Float
+
+    init(studentInfomation: [String:AnyObject]) {
+        self.firstName = studentInfomation["firstName"] as? String ?? ""
+        self.lastName = studentInfomation["lastName"] as? String ?? ""
+        self.mediaURL = studentInfomation["mediaURL"] as? String ?? "http://www.udacity.com"
+        self.latitude = studentInfomation["latitude"] as? Float ?? 0.0
+        self.longitude = studentInfomation["longitude"] as? Float ?? 0.0
+    }
 }

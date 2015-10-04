@@ -30,13 +30,8 @@ class StudentMapViewController: UIViewController {
                     self.displayAlert("Unable to show student location. (\(error))")
                 } else {
                     for student in result.valueForKey("results") as! [[String: AnyObject]] {
-                        let firstName = student["firstName"] as! String
-                        let lastName = student["lastName"] as! String
-                        let mediaURL = student["mediaURL"] as! String
-                        let latitude = student["latitude"] as! Float
-                        let longitude = student["longitude"] as! Float
-                        let studentLocation = StudentLocation(firstName: firstName, lastName: lastName, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
-                        ParseClient.sharedInstance().studentLocationList.append(studentLocation)
+                        let studentInformation = StudentInformation(studentInfomation: student)
+                        ParseClient.sharedInstance().studentInformationList.append(studentInformation)
                     }
                     //TODO: plot pin
                 }

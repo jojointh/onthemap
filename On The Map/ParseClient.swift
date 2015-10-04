@@ -13,7 +13,7 @@ class ParseClient: NSObject {
     /* Shared session */
     var session: NSURLSession
     
-    var studentLocationList = [StudentLocation]()
+    var studentInformationList = [StudentInformation]()
 
     override init() {
         session = NSURLSession.sharedSession()
