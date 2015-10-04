@@ -227,21 +227,40 @@
         <!--On The Map-->
         <scene sceneID="HVM-mv-Vil">
             <objects>
-                <viewController id="LjE-dV-3tq" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oRJ-xx-UKL"/>
-                        <viewControllerLayoutGuide type="bottom" id="9bP-IE-QVc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5KZ-GI-kQt">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dV8-eO-DfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="LjE-dV-3tq" customClass="StudentTableViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nhe-N2-tmE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentTableCell" textLabel="APn-aG-Pwb" imageView="QF0-1H-Exb" style="IBUITableViewCellStyleDefault" id="MU7-Hs-zD5">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MU7-Hs-zD5" id="QWh-GV-DLr">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="APn-aG-Pwb">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="pinButton" id="QF0-1H-Exb">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LjE-dV-3tq" id="DP0-ic-IIV"/>
+                            <outlet property="delegate" destination="LjE-dV-3tq" id="EC3-lq-ug2"/>
+                        </connections>
+                    </tableView>
                     <navigationItem key="navigationItem" title="On The Map" id="AP3-7E-IjJ">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="HVt-0h-wKS"/>
                     </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dV8-eO-DfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3579" y="656"/>
         </scene>
@@ -341,6 +360,7 @@
     <resources>
         <image name="listTab" width="32" height="32"/>
         <image name="mapTab" width="32" height="32"/>
+        <image name="pinButton" width="32" height="32"/>
         <image name="udacityLogo" width="256" height="256"/>
     </resources>
 </document>
