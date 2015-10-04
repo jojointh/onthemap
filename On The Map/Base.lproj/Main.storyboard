@@ -422,6 +422,26 @@
                                     <outlet property="delegate" destination="75Z-WR-5mR" id="5fV-Bw-UX8"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCM-pF-BeI">
+                                <rect key="frame" x="244" y="525" width="113" height="33"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="HuP-QN-JsU"/>
+                                    <constraint firstAttribute="width" constant="113" id="wAG-bN-R9U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="confirmLocation:" destination="75Z-WR-5mR" eventType="touchUpInside" id="zcv-eO-wWV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529411764706" green="0.36078431372549019" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -429,15 +449,18 @@
                             <constraint firstItem="xda-aE-xPA" firstAttribute="trailing" secondItem="kOd-qV-RjM" secondAttribute="trailingMargin" id="QT8-1x-EkN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8HF-b6-Sk3" secondAttribute="trailing" constant="-16" id="Qai-2l-k8S"/>
                             <constraint firstItem="8HF-b6-Sk3" firstAttribute="top" secondItem="kHo-DH-jCL" secondAttribute="bottom" constant="48" id="WYm-ab-3gQ"/>
+                            <constraint firstItem="7Rl-7E-6Ve" firstAttribute="top" secondItem="DCM-pF-BeI" secondAttribute="bottom" constant="42" id="Xxd-BB-UUI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wV4-U4-OFe" secondAttribute="trailing" constant="-16" id="i4g-Xr-bF4"/>
                             <constraint firstItem="xda-aE-xPA" firstAttribute="top" secondItem="kHo-DH-jCL" secondAttribute="bottom" id="khw-X5-PDR"/>
                             <constraint firstItem="7Rl-7E-6Ve" firstAttribute="top" secondItem="wV4-U4-OFe" secondAttribute="bottom" id="mbV-DO-0Xl"/>
+                            <constraint firstAttribute="centerX" secondItem="DCM-pF-BeI" secondAttribute="centerX" id="n32-jA-D5G"/>
                             <constraint firstItem="wV4-U4-OFe" firstAttribute="top" secondItem="8HF-b6-Sk3" secondAttribute="bottom" constant="8" id="tnb-RW-DDh"/>
                             <constraint firstItem="8HF-b6-Sk3" firstAttribute="leading" secondItem="kOd-qV-RjM" secondAttribute="leadingMargin" constant="-16" id="w70-34-5jj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addLinkTextView" destination="8HF-b6-Sk3" id="6x5-d0-Z9o"/>
+                        <outlet property="mapView" destination="wV4-U4-OFe" id="UQ4-kh-zgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOE-Ls-dWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -552,6 +575,6 @@
         <image name="udacityLogo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qMH-Rr-eA4"/>
+        <segue reference="Pnb-5j-TmZ"/>
     </inferredMetricsTieBreakers>
 </document>

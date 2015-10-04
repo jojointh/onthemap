@@ -13,6 +13,7 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     
     @IBOutlet weak var locationTextField: UITextView!
     let placeholder = "Enter Your Location Here"
+    let foundLocation = MKPointAnnotation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     }
     
     @IBAction func findLocation(sender: UIButton) {
-        if locationTextField.text.isEmpty {
+        if locationTextField.textColor == UIColor.lightGrayColor() {
             displayAlert("Must Enter a Location.")
         } else {
             let localSearchRequest = MKLocalSearchRequest()
@@ -49,6 +50,8 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
                 if response == nil {
                     self.displayAlert("Location not Found")
                 } else {
+                    self.foundLocation.coordinate = CLLocationCoordinate2D(latitude: response.boundingRegion.center.latitude, longitude: response.boundingRegion.center.longitude)
+                    
                     self.performSegueWithIdentifier("LocationAddLink", sender: self)
                 }
             }
@@ -57,6 +60,11 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     
     @IBAction func dismiss(sender: UIButton) {
         dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destinationVC = segue.destinationViewController as! LocationAddLinkViewController
+        destinationVC.foundLocation = foundLocation
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
