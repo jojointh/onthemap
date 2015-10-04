@@ -103,14 +103,13 @@
 		8DF5A7141BB93DB400214AC0 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				EB22FB0E1BC170CD0096EEF7 /* Controller */,
 				8DF5A75E1BBA91A400214AC0 /* Model */,
 				8DF5A7171BB93DB400214AC0 /* AppDelegate.swift */,
-				8DF5A7191BB93DB400214AC0 /* LoginViewController.swift */,
 				8DF5A71B1BB93DB400214AC0 /* Main.storyboard */,
 				8DF5A71E1BB93DB400214AC0 /* Images.xcassets */,
 				8DF5A7201BB93DB400214AC0 /* LaunchScreen.xib */,
 				8DF5A7151BB93DB400214AC0 /* Supporting Files */,
-				EB22FB011BC062870096EEF7 /* StudentMapViewController.swift */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -181,6 +180,15 @@
 				EB22FB091BC1279F0096EEF7 /* StudentInfomation.swift */,
 			);
 			name = Parse;
+			sourceTree = "<group>";
+		};
+		EB22FB0E1BC170CD0096EEF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5A7191BB93DB400214AC0 /* LoginViewController.swift */,
+				EB22FB011BC062870096EEF7 /* StudentMapViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
