@@ -27,4 +27,9 @@ class StudentTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let student = ParseClient.sharedInstance().studentInformationList[indexPath.row]
+        UIApplication.sharedApplication().openURL(NSURL(string: student.mediaURL)!)
+    }
 }
