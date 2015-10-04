@@ -13,6 +13,7 @@
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
         <mutableArray key="Roboto-Thin.ttf">
             <string>Roboto-Thin</string>
@@ -286,10 +287,10 @@
             </objects>
             <point key="canvasLocation" x="3579" y="656"/>
         </scene>
-        <!--Study Location View Controller-->
+        <!--Location Search View Controller-->
         <scene sceneID="ICe-b5-1mj">
             <objects>
-                <viewController id="xxB-wC-HFO" customClass="StudyLocationViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xxB-wC-HFO" customClass="LocationSearchViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XAQ-KJ-kZd"/>
                         <viewControllerLayoutGuide type="bottom" id="gAT-l7-XhC"/>
@@ -308,6 +309,25 @@
                                     <outlet property="delegate" destination="xxB-wC-HFO" id="dRk-OZ-uE4"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88i-iI-dJZ">
+                                <rect key="frame" x="200" y="519" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="pX4-lN-7I5"/>
+                                </constraints>
+                                <state key="normal" title="Find on the Map">
+                                    <color key="titleColor" red="0.21176470588235294" green="0.3843137254901961" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="findLocation:" destination="xxB-wC-HFO" eventType="touchUpInside" id="4Z3-Sc-x2E"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZj-Ac-fjw">
                                 <rect key="frame" x="257" y="135" width="86" height="36"/>
                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="30"/>
@@ -336,25 +356,6 @@
                                     <action selector="dismiss:" destination="xxB-wC-HFO" eventType="touchUpInside" id="xEs-UO-4FU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88i-iI-dJZ">
-                                <rect key="frame" x="200" y="519" width="200" height="30"/>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="pX4-lN-7I5"/>
-                                </constraints>
-                                <state key="normal" title="Find on the Map">
-                                    <color key="titleColor" red="0.21176470588235294" green="0.3843137254901961" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="findLocation:" destination="xxB-wC-HFO" eventType="touchUpInside" id="4Z3-Sc-x2E"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -376,11 +377,72 @@
                     </view>
                     <connections>
                         <outlet property="locationTextField" destination="L9w-yD-mbD" id="pNU-eo-TzR"/>
+                        <segue destination="75Z-WR-5mR" kind="presentation" identifier="LocationAddLink" id="Tgc-0Q-YVE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzx-A1-pcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4353" y="358"/>
+        </scene>
+        <!--Location Add Link View Controller-->
+        <scene sceneID="6le-ZS-2QN">
+            <objects>
+                <viewController id="75Z-WR-5mR" customClass="LocationAddLinkViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kHo-DH-jCL"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Rl-7E-6Ve"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kOd-qV-RjM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xda-aE-xPA">
+                                <rect key="frame" x="536" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="xxB-wC-HFO" eventType="touchUpInside" id="L0I-42-QB2"/>
+                                    <action selector="dismiss:" destination="75Z-WR-5mR" eventType="touchUpInside" id="aPx-Jc-WvM"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wV4-U4-OFe">
+                                <rect key="frame" x="0.0" y="216" width="600" height="384"/>
+                            </mapView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter a Link to Share Here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8HF-b6-Sk3">
+                                <rect key="frame" x="0.0" y="68" width="600" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="TBh-Cm-Ikv"/>
+                                </constraints>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="75Z-WR-5mR" id="5fV-Bw-UX8"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18823529411764706" green="0.36078431372549019" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wV4-U4-OFe" firstAttribute="leading" secondItem="kOd-qV-RjM" secondAttribute="leadingMargin" constant="-16" id="NKp-aU-x4T"/>
+                            <constraint firstItem="xda-aE-xPA" firstAttribute="trailing" secondItem="kOd-qV-RjM" secondAttribute="trailingMargin" id="QT8-1x-EkN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8HF-b6-Sk3" secondAttribute="trailing" constant="-16" id="Qai-2l-k8S"/>
+                            <constraint firstItem="8HF-b6-Sk3" firstAttribute="top" secondItem="kHo-DH-jCL" secondAttribute="bottom" constant="48" id="WYm-ab-3gQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wV4-U4-OFe" secondAttribute="trailing" constant="-16" id="i4g-Xr-bF4"/>
+                            <constraint firstItem="xda-aE-xPA" firstAttribute="top" secondItem="kHo-DH-jCL" secondAttribute="bottom" id="khw-X5-PDR"/>
+                            <constraint firstItem="7Rl-7E-6Ve" firstAttribute="top" secondItem="wV4-U4-OFe" secondAttribute="bottom" id="mbV-DO-0Xl"/>
+                            <constraint firstItem="wV4-U4-OFe" firstAttribute="top" secondItem="8HF-b6-Sk3" secondAttribute="bottom" constant="8" id="tnb-RW-DDh"/>
+                            <constraint firstItem="8HF-b6-Sk3" firstAttribute="leading" secondItem="kOd-qV-RjM" secondAttribute="leadingMargin" constant="-16" id="w70-34-5jj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addLinkTextView" destination="8HF-b6-Sk3" id="6x5-d0-Z9o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rOE-Ls-dWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5057" y="358"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="be6-I7-nqG">

@@ -27,7 +27,8 @@
 		EB22FB081BC085F70096EEF7 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB071BC085F70096EEF7 /* ParseConstants.swift */; };
 		EB22FB0A1BC1279F0096EEF7 /* StudentInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB091BC1279F0096EEF7 /* StudentInfomation.swift */; };
 		EB22FB101BC171A90096EEF7 /* StudentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB0F1BC171A90096EEF7 /* StudentTableViewController.swift */; };
-		EB22FB121BC1932B0096EEF7 /* StudyLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB111BC1932B0096EEF7 /* StudyLocationViewController.swift */; };
+		EB22FB121BC1932B0096EEF7 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB111BC1932B0096EEF7 /* LocationSearchViewController.swift */; };
+		EB22FB161BC1A7D20096EEF7 /* LocationAddLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB151BC1A7D20096EEF7 /* LocationAddLinkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,8 @@
 		EB22FB071BC085F70096EEF7 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
 		EB22FB091BC1279F0096EEF7 /* StudentInfomation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInfomation.swift; sourceTree = "<group>"; };
 		EB22FB0F1BC171A90096EEF7 /* StudentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentTableViewController.swift; sourceTree = "<group>"; };
-		EB22FB111BC1932B0096EEF7 /* StudyLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyLocationViewController.swift; sourceTree = "<group>"; };
+		EB22FB111BC1932B0096EEF7 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		EB22FB151BC1A7D20096EEF7 /* LocationAddLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAddLinkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +194,8 @@
 				8DF5A7191BB93DB400214AC0 /* LoginViewController.swift */,
 				EB22FB011BC062870096EEF7 /* StudentMapViewController.swift */,
 				EB22FB0F1BC171A90096EEF7 /* StudentTableViewController.swift */,
-				EB22FB111BC1932B0096EEF7 /* StudyLocationViewController.swift */,
+				EB22FB111BC1932B0096EEF7 /* LocationSearchViewController.swift */,
+				EB22FB151BC1A7D20096EEF7 /* LocationAddLinkViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -313,7 +316,8 @@
 				8DF5A7621BBA91D900214AC0 /* UdacityClient.swift in Sources */,
 				EB22FB081BC085F70096EEF7 /* ParseConstants.swift in Sources */,
 				EB22FB101BC171A90096EEF7 /* StudentTableViewController.swift in Sources */,
-				EB22FB121BC1932B0096EEF7 /* StudyLocationViewController.swift in Sources */,
+				EB22FB161BC1A7D20096EEF7 /* LocationAddLinkViewController.swift in Sources */,
+				EB22FB121BC1932B0096EEF7 /* LocationSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
