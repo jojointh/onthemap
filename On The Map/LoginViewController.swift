@@ -45,9 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func doLogin(sender: UIButton) {
         //input should not empty
         if emailTextField.text.isEmpty || passwordTextField.text.isEmpty {
-            let alert = UIAlertController(title: "", message: "Empty Email or Password.", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
-            presentViewController(alert, animated: true, completion: nil)
+            displayAlert("Empty Email or Password.")
         } else {
             activityIndicator.startAnimating()
             let postParams = ["udacity":
