@@ -19,7 +19,6 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         var annotations = [MKPointAnnotation]()
         let parameters = ["limit": 100, "order": "-updatedAt"]
         let task = ParseClient.sharedInstance().taskGetRequest(ParseClient.Methods.StudentLocation, parameters: parameters) { result, error in
-            
             if let error = error {
                 if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
                     self.displayAlert(error.localizedDescription)

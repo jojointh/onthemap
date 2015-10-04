@@ -13,6 +13,8 @@ class UdacityClient: NSObject {
     /* Shared session */
     var session: NSURLSession
     
+    var userInfomation = StudentInformation(studentInfomation: [String:AnyObject]())
+    
     override init() {
         session = NSURLSession.sharedSession()
         super.init()
@@ -23,6 +25,26 @@ class UdacityClient: NSObject {
             static var sharedInstance = UdacityClient()
         }
         return Singleton.sharedInstance
+    }
+    
+    func taskGetRequest (methods: String, parameters: [String: AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        let urlString = Constants.BaseURL + methods + ParseClient.escapedParameters(parameters)
+        let url = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
+        
+        let task = session.dataTaskWithRequest(request) {
+            data, response, errorRequest in
+            if let error = errorRequest {
+                completionHandler(result: nil, error: error)
+            } else {
+                UdacityClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            }
+        }
+        
+        task.resume()
+        
+        return task
     }
     
     func taskPostRequest (methods: String, postParams: [String: AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
@@ -47,6 +69,15 @@ class UdacityClient: NSObject {
         task.resume()
         
         return task
+    }
+    
+    /* Helper: Substitute the key for the value that is contained within the method name */
+    class func subtituteKeyInMethod(method: String, key: String, value: String) -> String? {
+        if method.rangeOfString("{\(key)}") != nil {
+            return method.stringByReplacingOccurrencesOfString("{\(key)}", withString: value)
+        } else {
+            return nil
+        }
     }
     
     /* Helper: Given raw JSON, return a usable Foundation object */

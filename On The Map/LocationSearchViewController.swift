@@ -65,6 +65,7 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destinationVC = segue.destinationViewController as! LocationAddLinkViewController
         destinationVC.foundLocation = foundLocation
+        destinationVC.searchString = locationTextField.text
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {

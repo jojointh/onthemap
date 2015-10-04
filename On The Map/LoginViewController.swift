@@ -71,8 +71,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             self.displayAlert("Login Error")
                         }
                     } else {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.performSegueWithIdentifier("studentLocation", sender: self)
+                        //get user data
+                        if let userID = result.valueForKey("account")?.valueForKey("key") as? String {
+                            var mutableMethod: String = UdacityClient.Methods.UserData
+                            mutableMethod = UdacityClient.subtituteKeyInMethod(mutableMethod, key: UdacityClient.URLKeys.userID, value: userID)!
+                            UdacityClient.sharedInstance().taskGetRequest(mutableMethod, parameters: [String : AnyObject]()) {
+                                result, error in
+                                
+                                if let error = error {
+                                    if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
+                                        self.displayAlert(error.localizedDescription)
+                                    } else {
+                                        self.displayAlert("Could no get user data.")
+                                    }
+                                } else {
+                                    if let user = result.valueForKey("user") as? [String:AnyObject] {
+                                        let studentInfomation: [String:AnyObject] = [
+                                            "uniqueKey": userID,
+                                            "firstName": user["first_name"] ?? "",
+                                            "lastName": user["last_name"] ?? ""
+                                        ]
+                                        
+                                        UdacityClient.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
+                                        
+                                        dispatch_async(dispatch_get_main_queue()) {
+                                            self.performSegueWithIdentifier("studentLocation", sender: self)
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            self.displayAlert("Account data not found.")
                         }
                     }
                 }

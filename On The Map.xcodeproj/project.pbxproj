@@ -155,6 +155,7 @@
 		8DF5A75E1BBA91A400214AC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EB22FB091BC1279F0096EEF7 /* StudentInfomation.swift */,
 				8DF5A75F1BBA91AE00214AC0 /* Clients */,
 			);
 			name = Model;
@@ -183,7 +184,6 @@
 			children = (
 				EB22FB051BC085E80096EEF7 /* ParseClient.swift */,
 				EB22FB071BC085F70096EEF7 /* ParseConstants.swift */,
-				EB22FB091BC1279F0096EEF7 /* StudentInfomation.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";

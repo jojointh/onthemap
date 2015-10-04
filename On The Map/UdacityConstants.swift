@@ -16,4 +16,8 @@ extension UdacityClient {
         static let UserSession = "api/session"
         static let UserData = "api/users/{user_id}"
     }
+    
+    struct URLKeys {
+        static let userID = "user_id"
+    }
 }

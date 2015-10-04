@@ -15,6 +15,7 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var addLinkTextView: UITextView!
     let placeholder = "Enter a Link to Share Here"
     var foundLocation = MKPointAnnotation()
+    var searchString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,25 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
         if addLinkTextView.textColor == UIColor.lightGrayColor() {
             displayAlert("Must Enter a Link.")
         } else {
+            var parameters = UdacityClient.sharedInstance().userInfomation.getDictionary()
+            parameters["mediaURL"] = addLinkTextView.text
+            parameters["mapString"] = searchString
+            parameters["latitude"] = foundLocation.coordinate.latitude
+            parameters["longitude"] = foundLocation.coordinate.longitude
             
+            ParseClient.sharedInstance().taskPostRequest(ParseClient.Methods.StudentLocation, postParams: parameters) {
+                result, error in
+                if let error = error {
+                    if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
+                        self.displayAlert(error.localizedDescription)
+                    } else {
+                        self.displayAlert("Could no save location.")
+                    }
+                } else {
+                    //TODO: check error and dismiss
+                    println(result)
+                }
+            }
         }
     }
     
