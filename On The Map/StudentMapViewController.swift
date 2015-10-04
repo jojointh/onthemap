@@ -16,7 +16,7 @@ class StudentMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let parameters = ["limit": 100]
+        let parameters = ["limit": 100, "order": "-updatedAt"]
         let task = ParseClient.sharedInstance().taskGetRequest(ParseClient.Methods.StudentLocation, parameters: parameters) { result, error in
             
             if let error = error {
@@ -27,9 +27,18 @@ class StudentMapViewController: UIViewController {
                 }
             } else {
                 if let error = result.valueForKey("error") as? String {
-                    self.displayAlert("Unable to show student location.")
+                    self.displayAlert("Unable to show student location. (\(error))")
                 } else {
-                    //TODO: store data in Student struct and plot pin
+                    for student in result.valueForKey("results") as! [[String: AnyObject]] {
+                        let firstName = student["firstName"] as! String
+                        let lastName = student["lastName"] as! String
+                        let mediaURL = student["mediaURL"] as! String
+                        let latitude = student["latitude"] as! Float
+                        let longitude = student["longitude"] as! Float
+                        let studentLocation = StudentLocation(firstName: firstName, lastName: lastName, mediaURL: mediaURL, latitude: latitude, longitude: longitude)
+                        ParseClient.sharedInstance().studentLocationList.append(studentLocation)
+                    }
+                    //TODO: plot pin
                 }
             }
         }
