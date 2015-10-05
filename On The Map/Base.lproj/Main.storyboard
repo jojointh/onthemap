@@ -351,6 +351,9 @@
                                     <action selector="dismiss:" destination="xxB-wC-HFO" eventType="touchUpInside" id="xEs-UO-4FU"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DWr-Ae-Gcy">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -362,6 +365,8 @@
                             <constraint firstAttribute="centerX" secondItem="wtZ-I8-dDW" secondAttribute="centerX" id="LXB-bP-opt"/>
                             <constraint firstItem="88i-iI-dJZ" firstAttribute="top" secondItem="L9w-yD-mbD" secondAttribute="bottom" constant="37" id="OKZ-LH-uIE"/>
                             <constraint firstItem="gAT-l7-XhC" firstAttribute="top" secondItem="88i-iI-dJZ" secondAttribute="bottom" constant="51" id="QI5-mE-x2h"/>
+                            <constraint firstAttribute="centerX" secondItem="DWr-Ae-Gcy" secondAttribute="centerX" id="Qjs-90-AgW"/>
+                            <constraint firstAttribute="centerY" secondItem="DWr-Ae-Gcy" secondAttribute="centerY" id="RhO-CK-5xe"/>
                             <constraint firstAttribute="centerX" secondItem="88i-iI-dJZ" secondAttribute="centerX" id="TBI-SZ-JZp"/>
                             <constraint firstItem="L9w-yD-mbD" firstAttribute="leading" secondItem="LRg-s0-NwP" secondAttribute="leadingMargin" constant="-16" id="Te1-rR-IKM"/>
                             <constraint firstItem="frt-bi-zwx" firstAttribute="top" secondItem="XAQ-KJ-kZd" secondAttribute="bottom" constant="42" id="WgP-24-hqi"/>
@@ -371,6 +376,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="DWr-Ae-Gcy" id="Oqx-BE-btT"/>
                         <outlet property="locationTextField" destination="L9w-yD-mbD" id="pNU-eo-TzR"/>
                         <segue destination="75Z-WR-5mR" kind="presentation" identifier="LocationAddLink" id="Tgc-0Q-YVE"/>
                     </connections>

@@ -11,6 +11,7 @@ import MapKit
 
 class LocationSearchViewController: UIViewController, UITextViewDelegate{
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var locationTextField: UITextView!
     let placeholder = "Enter Your Location Here"
     let foundLocation = MKPointAnnotation()
@@ -39,11 +40,15 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     }
     
     @IBAction func findLocation(sender: UIButton) {
+        activityIndicator.startAnimating()
         if locationTextField.textColor == UIColor.lightGrayColor() {
             displayAlert("Must Enter a Location.")
         } else {
             CLGeocoder().geocodeAddressString(locationTextField.text) {
                 placemarks, error in
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.activityIndicator.stopAnimating()
+                }
                 if let error = error {
                     self.displayAlert(error.localizedDescription)
                 } else {
