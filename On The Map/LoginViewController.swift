@@ -29,13 +29,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         tapRecognizer?.numberOfTapsRequired = 1
         view.addGestureRecognizer(tapRecognizer!)
-        
-        if FBSDKAccessToken.currentAccessToken() == nil {
-            println("Not logged in..")
-        }
-        else {
-            println("Logged in..")
-        }
     }
     
     override func viewWillDisappear(animated: Bool) {
