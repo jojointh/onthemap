@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -27,19 +29,80 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         tapRecognizer?.numberOfTapsRequired = 1
         view.addGestureRecognizer(tapRecognizer!)
+        
+        if FBSDKAccessToken.currentAccessToken() == nil {
+            println("Not logged in..")
+        }
+        else {
+            println("Logged in..")
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         view.removeGestureRecognizer(tapRecognizer!)
     }
     
+    @IBAction func loginFacebook(sender: UIButton) {
+        var fbLoginManager:FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.logInWithReadPermissions(["public_profile", "email"]) { result, error in
+            if error == nil {
+                if result.isCancelled {
+                    self.displayAlert("Login Aborted.")
+                } else {
+                    var fbloginresult : FBSDKLoginManagerLoginResult = result
+                    if(fbloginresult.grantedPermissions.contains("email"))
+                    {
+                        self.getFBUserData()
+                        fbLoginManager.logOut()
+                    }
+                }
+            } else {
+                self.displayAlert(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getFBUserData() {
+        if let accessToken = FBSDKAccessToken.currentAccessToken() {
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+                if error == nil {
+                    let parameters = ["facebook_mobile": ["access_token":accessToken.tokenString]]
+                    
+                    let task = UdacityClient.sharedInstance().taskPostRequest(UdacityClient.Methods.UserSession, postParams: parameters) { result, error in
+                        if let error = error {
+                            if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
+                                self.displayAlert(error.localizedDescription)
+                            } else {
+                                self.displayAlert("Login unsuccessful.")
+                            }
+                        } else {
+                            //save session
+                            println(result)
+                        }
+                    }
+                } else {
+                    self.displayAlert(error.localizedDescription)
+                }
+            })
+        }
+    }
+    
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        if error == nil {
+            println("Login complete.")
+            self.performSegueWithIdentifier("showNew", sender: self)
+        }
+        else {
+            println(error.localizedDescription)
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        println("User logged out...")
     }
 
     @IBAction func doLogin(sender: UIButton) {

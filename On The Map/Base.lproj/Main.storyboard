@@ -171,6 +171,15 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="rra-Lc-YWI">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhX-hr-x0m">
+                                <rect key="frame" x="150" y="515" width="300" height="46"/>
+                                <state key="normal" image="loginFacebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginFacebook:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JEe-Rb-zMi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.47058823529411764" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -196,10 +205,12 @@
                             <constraint firstItem="dYO-Oh-Khs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="hxn-UM-bMk"/>
                             <constraint firstAttribute="centerX" secondItem="iEf-iN-tQB" secondAttribute="centerX" id="pVV-af-JYB"/>
                             <constraint firstItem="gu5-5n-jaI" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="px6-bW-RcS"/>
+                            <constraint firstAttribute="centerX" secondItem="nhX-hr-x0m" secondAttribute="centerX" id="qvn-wC-5RJ"/>
                             <constraint firstItem="gu5-5n-jaI" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="r6f-xa-uFV"/>
                             <constraint firstItem="k4e-to-19E" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="r8S-4k-gds"/>
                             <constraint firstItem="edv-p6-EPn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="w0o-nR-Zl5"/>
                             <constraint firstItem="edv-p6-EPn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="wg7-ba-34M"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="nhX-hr-x0m" secondAttribute="bottom" constant="39" id="whZ-I5-74J"/>
                             <constraint firstItem="edv-p6-EPn" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="xGU-22-uNw"/>
                             <constraint firstAttribute="centerX" secondItem="iEf-iN-tQB" secondAttribute="centerX" id="ylb-sN-FaE"/>
                             <constraint firstItem="edv-p6-EPn" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="yxt-qf-FPd"/>
@@ -234,7 +245,6 @@
         <!--On The Map-->
         <scene sceneID="HVM-mv-Vil">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dV8-eO-DfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="LjE-dV-3tq" customClass="StudentTableViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nhe-N2-tmE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -279,6 +289,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dV8-eO-DfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3579" y="656"/>
         </scene>
@@ -330,13 +341,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frt-bi-zwx">
-                                <rect key="frame" x="207" y="62" width="186" height="35.5"/>
+                                <rect key="frame" x="207" y="62" width="186" height="36"/>
                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="30"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtZ-I8-dDW">
-                                <rect key="frame" x="242" y="97" width="117" height="35.5"/>
+                                <rect key="frame" x="242" y="97" width="117" height="36"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="30"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -575,6 +586,7 @@
     </scenes>
     <resources>
         <image name="listTab" width="32" height="32"/>
+        <image name="loginFacebook" width="300" height="46"/>
         <image name="mapTab" width="32" height="32"/>
         <image name="pinButton" width="32" height="32"/>
         <image name="udacityLogo" width="256" height="256"/>
