@@ -15,7 +15,26 @@ class StudentTableViewController: UITableViewController {
     }
     
     @IBAction func logout(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        UdacityClient.sharedInstance().taskDeleteRequest(UdacityClient.Methods.UserSession) {
+            result, error in
+            if let error = error {
+                if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
+                    self.displayAlert(error.localizedDescription)
+                } else {
+                    self.displayAlert("Logout not successful.")
+                }
+            } else {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+    }
+    
+    func displayAlert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+        dispatch_async(dispatch_get_main_queue()) {
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -71,6 +71,34 @@ class UdacityClient: NSObject {
         return task
     }
     
+    func taskDeleteRequest (methods: String, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        let urlString = Constants.BaseURL + methods
+        let url = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
+        var jsonifyError: NSError? = nil
+        request.HTTPMethod = "DELETE"
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies as! [NSHTTPCookie] {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value!, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil {
+                completionHandler(result: nil, error: error)
+            } else {
+                UdacityClient.parseJSONWithCompletionHandler(data, completionHandler: completionHandler)
+            }
+        }
+        
+        task.resume()
+        
+        return task
+    }
+    
     /* Helper: Substitute the key for the value that is contained within the method name */
     class func subtituteKeyInMethod(method: String, key: String, value: String) -> String? {
         if method.rangeOfString("{\(key)}") != nil {

@@ -55,7 +55,18 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logout(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        UdacityClient.sharedInstance().taskDeleteRequest(UdacityClient.Methods.UserSession) {
+            result, error in
+            if let error = error {
+                if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
+                    self.displayAlert(error.localizedDescription)
+                } else {
+                    self.displayAlert("Logout not successful.")
+                }
+            } else {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
     }
     
     func displayAlert(message: String) {
