@@ -275,7 +275,11 @@
                         <barButtonItem title="Item" id="ZOR-ni-l2T"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="On The Map" id="AP3-7E-IjJ">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="HVt-0h-wKS"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="HVt-0h-wKS">
+                            <connections>
+                                <action selector="logout:" destination="LjE-dV-3tq" id="iQl-Hp-TJ1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="pinButton" id="4hH-bg-FMq">
                             <connections>
                                 <segue destination="xxB-wC-HFO" kind="presentation" id="qMH-Rr-eA4"/>
@@ -495,7 +499,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="pXG-CX-v4C">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="fcQ-bM-UqL"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="fcQ-bM-UqL">
+                            <connections>
+                                <action selector="logout:" destination="uj9-nR-kV1" id="LwK-Nh-bTY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="pinButton" id="wPk-sM-jHt">
                             <connections>
                                 <segue destination="xxB-wC-HFO" kind="presentation" id="Pnb-5j-TmZ"/>
@@ -575,6 +583,6 @@
         <image name="udacityLogo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pnb-5j-TmZ"/>
+        <segue reference="qMH-Rr-eA4"/>
     </inferredMetricsTieBreakers>
 </document>

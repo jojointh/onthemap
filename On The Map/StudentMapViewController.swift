@@ -54,6 +54,10 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    @IBAction func logout(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func displayAlert(message: String) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))

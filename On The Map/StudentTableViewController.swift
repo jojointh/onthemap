@@ -14,6 +14,10 @@ class StudentTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func logout(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ParseClient.sharedInstance().studentInformationList.count
     }
