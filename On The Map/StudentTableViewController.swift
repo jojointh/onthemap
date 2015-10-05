@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class StudentTableViewController: UITableViewController {
     
@@ -24,6 +25,7 @@ class StudentTableViewController: UITableViewController {
                     self.displayAlert("Logout not successful.")
                 }
             } else {
+                FBSDKLoginManager().logOut()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }

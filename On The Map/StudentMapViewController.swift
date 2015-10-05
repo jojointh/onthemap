@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FBSDKLoginKit
 
 class StudentMapViewController: UIViewController, MKMapViewDelegate {
     
@@ -64,6 +65,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
                     self.displayAlert("Logout not successful.")
                 }
             } else {
+                FBSDKLoginManager().logOut()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }

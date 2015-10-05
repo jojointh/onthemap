@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -43,6 +43,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
     
     @IBAction func loginFacebook(sender: UIButton) {
+        activityIndicator.startAnimating()
         var fbLoginManager:FBSDKLoginManager = FBSDKLoginManager()
         fbLoginManager.logInWithReadPermissions(["public_profile", "email"]) { result, error in
             if error == nil {
@@ -64,7 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func getFBUserData() {
         if let accessToken = FBSDKAccessToken.currentAccessToken() {
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, resultFB, error) -> Void in
                 if error == nil {
                     let parameters = ["facebook_mobile": ["access_token":accessToken.tokenString]]
                     
@@ -76,8 +77,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                                 self.displayAlert("Login unsuccessful.")
                             }
                         } else {
-                            //save session
-                            println(result)
+                            if let userID = result.valueForKey("account")?.valueForKey("key") as? String {
+                                let studentInfomation: [String:AnyObject] = [
+                                    "uniqueKey": userID,
+                                    "firstName": resultFB.valueForKey("first_name") ?? "",
+                                    "lastName": resultFB.valueForKey("last_name") ?? ""
+                                ]
+                                
+                                UdacityClient.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
+                                
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.activityIndicator.stopAnimating()
+                                    self.performSegueWithIdentifier("studentLocation", sender: self)
+                                }
+                            } else {
+                                self.displayAlert("Login unsuccessful. (no user ID)")
+                            }
                         }
                     }
                 } else {
@@ -89,20 +104,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func handleSingleTap(recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
-    }
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        if error == nil {
-            println("Login complete.")
-            self.performSegueWithIdentifier("showNew", sender: self)
-        }
-        else {
-            println(error.localizedDescription)
-        }
-    }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User logged out...")
     }
 
     @IBAction func doLogin(sender: UIButton) {
