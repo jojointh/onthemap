@@ -44,11 +44,14 @@ class StudentTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("StudentTableCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("StudentTableCell", forIndexPath: indexPath) as! StudentCell
         
         let student = ParseClient.sharedInstance().studentInformationList[indexPath.row]
         
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
+        cell.latitude = student.latitude
+        cell.longitude = student.longitude
+        cell.tableView = self
         
         return cell
     }

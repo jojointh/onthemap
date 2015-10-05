@@ -251,11 +251,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentTableCell" textLabel="APn-aG-Pwb" imageView="QF0-1H-Exb" style="IBUITableViewCellStyleDefault" id="MU7-Hs-zD5">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentTableCell" textLabel="APn-aG-Pwb" imageView="QF0-1H-Exb" style="IBUITableViewCellStyleDefault" id="MU7-Hs-zD5" customClass="StudentCell" customModule="On_The_Map" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MU7-Hs-zD5" id="QWh-GV-DLr">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="m3c-pL-wyd">
+                                            <rect key="frame" x="273" y="12" width="20" height="20"/>
+                                        </activityIndicatorView>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="APn-aG-Pwb">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -265,8 +268,27 @@
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="pinButton" id="QF0-1H-Exb">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vl2-Vf-hI2">
+                                            <rect key="frame" x="62" y="25" width="59" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <state key="normal" title="Get Address">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showMap:" destination="MU7-Hs-zD5" eventType="touchUpInside" id="kym-Vu-zub"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="m3c-pL-wyd" firstAttribute="centerX" secondItem="QWh-GV-DLr" secondAttribute="centerX" id="371-50-Kzk"/>
+                                        <constraint firstItem="m3c-pL-wyd" firstAttribute="top" secondItem="QWh-GV-DLr" secondAttribute="topMargin" constant="4" id="5AG-qD-bri"/>
+                                        <constraint firstItem="vl2-Vf-hI2" firstAttribute="top" secondItem="QWh-GV-DLr" secondAttribute="topMargin" constant="17" id="8Kj-Ep-BGw"/>
+                                        <constraint firstItem="vl2-Vf-hI2" firstAttribute="leading" secondItem="APn-aG-Pwb" secondAttribute="leading" id="H9r-2h-vLu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="m3c-pL-wyd" id="FmK-ET-Z7o"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -305,8 +327,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-yD-mbD">
-                                <rect key="frame" x="0.0" y="215" width="600" height="267"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-yD-mbD">
+                                <rect key="frame" x="0.0" y="214" width="600" height="268"/>
                                 <color key="backgroundColor" red="0.24313725490196078" green="0.4392156862745098" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
@@ -335,7 +357,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZj-Ac-fjw">
-                                <rect key="frame" x="257" y="135" width="86" height="36"/>
+                                <rect key="frame" x="257" y="134" width="85.5" height="35.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="30"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -346,8 +368,8 @@
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="studying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtZ-I8-dDW">
-                                <rect key="frame" x="242" y="96" width="117" height="35.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtZ-I8-dDW">
+                                <rect key="frame" x="242" y="97" width="117" height="35.5"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="30"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

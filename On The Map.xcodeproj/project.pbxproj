@@ -31,6 +31,7 @@
 		EB22FB161BC1A7D20096EEF7 /* LocationAddLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB151BC1A7D20096EEF7 /* LocationAddLinkViewController.swift */; };
 		EB22FB221BC2C2CD0096EEF7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB22FB211BC2C2CD0096EEF7 /* FBSDKCoreKit.framework */; };
 		EB22FB241BC2C2D60096EEF7 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB22FB231BC2C2D60096EEF7 /* FBSDKLoginKit.framework */; };
+		EB22FB261BC2CA010096EEF7 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB251BC2CA010096EEF7 /* StudentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		EB22FB151BC1A7D20096EEF7 /* LocationAddLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationAddLinkViewController.swift; sourceTree = "<group>"; };
 		EB22FB211BC2C2CD0096EEF7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../FacebookSDKs-iOS-20150813/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		EB22FB231BC2C2D60096EEF7 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../FacebookSDKs-iOS-20150813/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		EB22FB251BC2CA010096EEF7 /* StudentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				EB22FB011BC062870096EEF7 /* StudentMapViewController.swift */,
 				EB22FB0F1BC171A90096EEF7 /* StudentTableViewController.swift */,
 				EB22FB111BC1932B0096EEF7 /* LocationSearchViewController.swift */,
+				EB22FB251BC2CA010096EEF7 /* StudentCell.swift */,
 				EB22FB151BC1A7D20096EEF7 /* LocationAddLinkViewController.swift */,
 			);
 			name = Controller;
@@ -333,6 +336,7 @@
 				EB22FB081BC085F70096EEF7 /* ParseConstants.swift in Sources */,
 				EB22FB101BC171A90096EEF7 /* StudentTableViewController.swift in Sources */,
 				EB22FB161BC1A7D20096EEF7 /* LocationAddLinkViewController.swift in Sources */,
+				EB22FB261BC2CA010096EEF7 /* StudentCell.swift in Sources */,
 				EB22FB121BC1932B0096EEF7 /* LocationSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
