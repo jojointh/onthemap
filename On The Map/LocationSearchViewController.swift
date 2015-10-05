@@ -42,17 +42,16 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
         if locationTextField.textColor == UIColor.lightGrayColor() {
             displayAlert("Must Enter a Location.")
         } else {
-            let localSearchRequest = MKLocalSearchRequest()
-            localSearchRequest.naturalLanguageQuery = locationTextField.text
-            let localSearch = MKLocalSearch(request: localSearchRequest)
-            localSearch.startWithCompletionHandler {
-                response, error in
-                if response == nil {
-                    self.displayAlert("Location not Found")
+            CLGeocoder().geocodeAddressString(locationTextField.text) {
+                placemarks, error in
+                if let error = error {
+                    self.displayAlert(error.localizedDescription)
                 } else {
-                    self.foundLocation.coordinate = CLLocationCoordinate2D(latitude: response.boundingRegion.center.latitude, longitude: response.boundingRegion.center.longitude)
-                    
-                    self.performSegueWithIdentifier("LocationAddLink", sender: self)
+                    if let placemark = placemarks.first as? CLPlacemark {
+                        self.foundLocation.coordinate = placemark.location.coordinate
+                        
+                        self.performSegueWithIdentifier("LocationAddLink", sender: self)
+                    }
                 }
             }
         }
