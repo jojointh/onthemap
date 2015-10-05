@@ -158,11 +158,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                         
                                         UdacityClient.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
                                         
-                                        //clear login text field
-                                        self.emailTextField.text = ""
-                                        self.passwordTextField.text = ""
-                                        
                                         dispatch_async(dispatch_get_main_queue()) {
+                                            self.emailTextField.text = ""
+                                            self.passwordTextField.text = ""
                                             self.performSegueWithIdentifier("studentLocation", sender: self)
                                         }
                                     }
