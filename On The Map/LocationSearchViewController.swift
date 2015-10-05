@@ -13,6 +13,7 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var locationTextField: UITextView!
+    var activityIndicatorOverlay : UIView?
     let placeholder = "Enter Your Location Here"
     let foundLocation = MKPointAnnotation()
     
@@ -23,6 +24,11 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     override func viewWillAppear(animated: Bool) {
         locationTextField.text = placeholder
         locationTextField.textColor = UIColor.lightGrayColor()
+        
+        //activity indicator overlay
+        activityIndicatorOverlay = UIView(frame: view.frame)
+        activityIndicatorOverlay!.backgroundColor = UIColor.blackColor()
+        activityIndicatorOverlay!.alpha = 0.6
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -41,12 +47,14 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     
     @IBAction func findLocation(sender: UIButton) {
         activityIndicator.startAnimating()
+        view.addSubview(activityIndicatorOverlay!)
         if locationTextField.textColor == UIColor.lightGrayColor() {
             displayAlert("Must Enter a Location.")
         } else {
             CLGeocoder().geocodeAddressString(locationTextField.text) {
                 placemarks, error in
                 dispatch_async(dispatch_get_main_queue()) {
+                    self.activityIndicatorOverlay?.removeFromSuperview()
                     self.activityIndicator.stopAnimating()
                 }
                 if let error = error {
