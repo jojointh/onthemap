@@ -264,16 +264,7 @@
                             <outlet property="delegate" destination="LjE-dV-3tq" id="EC3-lq-ug2"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="Kz3-Xx-bbH"/>
-                        <barButtonItem title="Item" id="AIu-Bi-s7t"/>
-                        <barButtonItem title="Item" id="AdU-sK-fBH"/>
-                        <barButtonItem title="Item" id="Zkm-Ig-UEp"/>
-                        <barButtonItem title="Item" id="QYJ-bw-MCF"/>
-                        <barButtonItem title="Item" id="TOf-mn-6CZ"/>
-                        <barButtonItem title="Item" id="TJ8-N6-Ph8"/>
-                        <barButtonItem title="Item" id="ZOR-ni-l2T"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="On The Map" id="AP3-7E-IjJ">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="HVt-0h-wKS">
                             <connections>
