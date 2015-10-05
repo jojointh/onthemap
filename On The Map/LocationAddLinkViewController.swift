@@ -49,8 +49,13 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
                         self.displayAlert("Could no save location.")
                     }
                 } else {
-                    //TODO: check error and dismiss
-                    println(result)
+                    if let error = result.valueForKey("error") as? String {
+                        self.displayAlert(error)
+                    } else {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.presentingViewController!.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                    }
                 }
             }
         }
