@@ -17,13 +17,13 @@ struct StudentInformation {
     var latitude: Float
     var longitude: Float
 
-    init(studentInfomation: [String:AnyObject]) {
-        self.uniqueKey = studentInfomation["uniqueKey"] as? String ?? ""
-        self.firstName = studentInfomation["firstName"] as? String ?? ""
-        self.lastName = studentInfomation["lastName"] as? String ?? ""
-        self.mediaURL = studentInfomation["mediaURL"] as? String ?? "http://www.udacity.com"
-        self.latitude = studentInfomation["latitude"] as? Float ?? 0.0
-        self.longitude = studentInfomation["longitude"] as? Float ?? 0.0
+    init(dictionary: [String:AnyObject]) {
+        self.uniqueKey = dictionary["uniqueKey"] as? String ?? ""
+        self.firstName = dictionary["firstName"] as? String ?? ""
+        self.lastName = dictionary["lastName"] as? String ?? ""
+        self.mediaURL = dictionary["mediaURL"] as? String ?? "http://www.udacity.com"
+        self.latitude = dictionary["latitude"] as? Float ?? 0.0
+        self.longitude = dictionary["longitude"] as? Float ?? 0.0
     }
     
     func getDictionary() -> [String:AnyObject] {
