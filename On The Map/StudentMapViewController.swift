@@ -22,7 +22,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
             if let studentLocationList = studentLocationList {
                 for student in studentLocationList {
                     let studentInformation = StudentInformation(studentInfomation: student)
-                    ParseClient.sharedInstance().studentInformationList.append(studentInformation)
+                    AppData.sharedInstance().studentInformationList.append(studentInformation)
                     
                     // create annotation point
                     let lat = CLLocationDegrees(studentInformation.latitude)

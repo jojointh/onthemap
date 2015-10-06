@@ -1,5 +1,5 @@
 //
-//  UserInfo.swift
+//  AppData.swift
 //  On The Map
 //
 //  Created by Surasak Adulprasertsuk on 10/7/15.
@@ -8,13 +8,14 @@
 
 import Foundation
 
-class UserInfo: NSObject {
+class AppData: NSObject {
     
     var userInfomation = StudentInformation(studentInfomation: [String:AnyObject]())
+    var studentInformationList = [StudentInformation]()
     
-    class func sharedInstance() -> UserInfo {
+    class func sharedInstance() -> AppData {
         struct Singleton {
-            static var sharedInstance = UserInfo()
+            static var sharedInstance = AppData()
         }
         return Singleton.sharedInstance
     }
