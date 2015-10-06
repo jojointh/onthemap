@@ -262,7 +262,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="APn-aG-Pwb">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="pinButton" id="QF0-1H-Exb">
@@ -328,7 +328,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-yD-mbD">
-                                <rect key="frame" x="0.0" y="214" width="600" height="268"/>
+                                <rect key="frame" x="0.0" y="215" width="600" height="267"/>
                                 <color key="backgroundColor" red="0.24313725490196078" green="0.4392156862745098" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
@@ -357,19 +357,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZj-Ac-fjw">
-                                <rect key="frame" x="257" y="134" width="85.5" height="35.5"/>
+                                <rect key="frame" x="257" y="135" width="86" height="36"/>
                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="30"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frt-bi-zwx">
-                                <rect key="frame" x="207" y="62" width="186" height="35.5"/>
+                                <rect key="frame" x="207" y="62" width="186" height="36"/>
                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="30"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtZ-I8-dDW">
-                                <rect key="frame" x="242" y="97" width="117" height="35.5"/>
+                                <rect key="frame" x="242" y="97" width="117" height="36"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="30"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -476,9 +476,30 @@
                                     <action selector="confirmLocation:" destination="75Z-WR-5mR" eventType="touchUpInside" id="zcv-eO-wWV"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFu-zS-CN0">
+                                <rect key="frame" x="244" y="175" width="113" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="V6w-Xe-fnc"/>
+                                    <constraint firstAttribute="width" constant="113" id="l4c-fv-16O"/>
+                                </constraints>
+                                <state key="normal" title="Preview Link">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="previewLink:" destination="75Z-WR-5mR" eventType="touchUpInside" id="f7B-BW-xCt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18823529411764706" green="0.36078431372549019" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="wV4-U4-OFe" firstAttribute="top" secondItem="oFu-zS-CN0" secondAttribute="bottom" constant="8" id="9MJ-qu-XNn"/>
+                            <constraint firstAttribute="centerX" secondItem="oFu-zS-CN0" secondAttribute="centerX" id="G2l-kt-yN0"/>
                             <constraint firstItem="wV4-U4-OFe" firstAttribute="leading" secondItem="kOd-qV-RjM" secondAttribute="leadingMargin" constant="-16" id="NKp-aU-x4T"/>
                             <constraint firstItem="xda-aE-xPA" firstAttribute="trailing" secondItem="kOd-qV-RjM" secondAttribute="trailingMargin" id="QT8-1x-EkN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8HF-b6-Sk3" secondAttribute="trailing" constant="-16" id="Qai-2l-k8S"/>
@@ -488,13 +509,20 @@
                             <constraint firstItem="xda-aE-xPA" firstAttribute="top" secondItem="kHo-DH-jCL" secondAttribute="bottom" id="khw-X5-PDR"/>
                             <constraint firstItem="7Rl-7E-6Ve" firstAttribute="top" secondItem="wV4-U4-OFe" secondAttribute="bottom" id="mbV-DO-0Xl"/>
                             <constraint firstAttribute="centerX" secondItem="DCM-pF-BeI" secondAttribute="centerX" id="n32-jA-D5G"/>
+                            <constraint firstItem="oFu-zS-CN0" firstAttribute="leading" secondItem="8HF-b6-Sk3" secondAttribute="trailing" constant="-356" id="oLR-Ql-sPF"/>
                             <constraint firstItem="wV4-U4-OFe" firstAttribute="top" secondItem="8HF-b6-Sk3" secondAttribute="bottom" constant="8" id="tnb-RW-DDh"/>
                             <constraint firstItem="8HF-b6-Sk3" firstAttribute="leading" secondItem="kOd-qV-RjM" secondAttribute="leadingMargin" constant="-16" id="w70-34-5jj"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="oLR-Ql-sPF"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addLinkTextView" destination="8HF-b6-Sk3" id="6x5-d0-Z9o"/>
                         <outlet property="mapView" destination="wV4-U4-OFe" id="UQ4-kh-zgU"/>
+                        <outlet property="previewLinkButton" destination="oFu-zS-CN0" id="l51-Od-pdp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOE-Ls-dWf" userLabel="First Responder" sceneMemberID="firstResponder"/>

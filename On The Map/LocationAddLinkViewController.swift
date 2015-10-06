@@ -10,9 +10,11 @@ import UIKit
 import MapKit
 
 class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
-    
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addLinkTextView: UITextView!
+    @IBOutlet weak var previewLinkButton: UIButton!
+
     let placeholder = "Enter a Link to Share Here"
     var foundLocation = MKPointAnnotation()
     var searchString = ""
@@ -34,29 +36,37 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
         if addLinkTextView.textColor == UIColor.lightGrayColor() {
             displayAlert("Must Enter a Link.")
         } else {
-            var parameters = UdacityClient.sharedInstance().userInfomation.getDictionary()
-            parameters["mediaURL"] = addLinkTextView.text
-            parameters["mapString"] = searchString
-            parameters["latitude"] = foundLocation.coordinate.latitude
-            parameters["longitude"] = foundLocation.coordinate.longitude
-            
-            ParseClient.sharedInstance().taskPostRequest(ParseClient.Methods.StudentLocation, postParams: parameters) {
-                result, error in
-                if let error = error {
-                    if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
-                        self.displayAlert(error.localizedDescription)
-                    } else {
-                        self.displayAlert("Could no save location.")
-                    }
-                } else {
-                    if let error = result.valueForKey("error") as? String {
-                        self.displayAlert(error)
-                    } else {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.presentingViewController!.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+            if let url = NSURL(string: addLinkTextView.text) {
+                if UIApplication.sharedApplication().canOpenURL(url) {
+                    var parameters = UdacityClient.sharedInstance().userInfomation.getDictionary()
+                    parameters["mediaURL"] = addLinkTextView.text
+                    parameters["mapString"] = searchString
+                    parameters["latitude"] = foundLocation.coordinate.latitude
+                    parameters["longitude"] = foundLocation.coordinate.longitude
+                    
+                    ParseClient.sharedInstance().taskPostRequest(ParseClient.Methods.StudentLocation, postParams: parameters) {
+                        result, error in
+                        if let error = error {
+                            if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
+                                self.displayAlert(error.localizedDescription)
+                            } else {
+                                self.displayAlert("Could no save location.")
+                            }
+                        } else {
+                            if let error = result.valueForKey("error") as? String {
+                                self.displayAlert(error)
+                            } else {
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.presentingViewController!.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+                                }
+                            }
                         }
                     }
+                } else {
+                    displayAlert("Invalid URL: It should begin with http:// or https://")
                 }
+            } else {
+                displayAlert("Invalid URL: It should begin with http:// or https://")
             }
         }
     }
@@ -66,7 +76,18 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
         presentingViewController!.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func previewLink(sender: UIButton) {
+        if let url = NSURL(string: addLinkTextView.text) {
+            if UIApplication.sharedApplication().canOpenURL(url) {
+                UIApplication.sharedApplication().openURL(url)
+                return
+            }
+        }
+        displayAlert("Invalid URL: It should begin with http:// or https://")
+    }
+    
     func textViewDidBeginEditing(textView: UITextView) {
+        previewLinkButton.hidden = true
         if textView.textColor == UIColor.lightGrayColor() {
             textView.text = nil
             textView.textColor = UIColor.whiteColor()
@@ -77,6 +98,9 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = placeholder
             textView.textColor = UIColor.lightGrayColor()
+            previewLinkButton.hidden = true
+        } else {
+            previewLinkButton.hidden = false
         }
     }
     
