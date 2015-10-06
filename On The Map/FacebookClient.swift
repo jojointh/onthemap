@@ -48,7 +48,7 @@ class FacebookClient: NSObject {
                                                     "lastName": resultFB.valueForKey("last_name") ?? ""
                                                 ]
                                                 
-                                                AppData.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
+                                                AppData.sharedInstance().userInfomation = StudentInformation(dictionary: studentInfomation)
                                                 
                                                 completionHandler(success: true, errorString: nil)
                                             } else {

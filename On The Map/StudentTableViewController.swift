@@ -26,7 +26,7 @@ class StudentTableViewController: UITableViewController {
             studentLocationList, errorString in
             if let studentLocationList = studentLocationList {
                 for student in studentLocationList {
-                    let studentInformation = StudentInformation(studentInfomation: student)
+                    let studentInformation = StudentInformation(dictionary: student)
                     AppData.sharedInstance().studentInformationList.append(studentInformation)
                 }
                 dispatch_async(dispatch_get_main_queue()) {

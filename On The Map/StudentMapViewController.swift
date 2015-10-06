@@ -33,7 +33,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
             studentLocationList, errorString in
             if let studentLocationList = studentLocationList {
                 for student in studentLocationList {
-                    let studentInformation = StudentInformation(studentInfomation: student)
+                    let studentInformation = StudentInformation(dictionary: student)
                     AppData.sharedInstance().studentInformationList.append(studentInformation)
                     
                     // create annotation point

@@ -10,7 +10,7 @@ import Foundation
 
 class AppData: NSObject {
     
-    var userInfomation = StudentInformation(studentInfomation: [String:AnyObject]())
+    var userInfomation = StudentInformation(dictionary: [String:AnyObject]())
     var studentInformationList = [StudentInformation]()
     
     class func sharedInstance() -> AppData {
