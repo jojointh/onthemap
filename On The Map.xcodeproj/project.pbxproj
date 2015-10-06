@@ -33,6 +33,7 @@
 		EB22FB261BC2CA010096EEF7 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB251BC2CA010096EEF7 /* StudentCell.swift */; };
 		EB22FB2C1BC2DD170096EEF7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB22FB2B1BC2DD170096EEF7 /* FBSDKCoreKit.framework */; };
 		EB22FB2E1BC2DD2E0096EEF7 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB22FB2D1BC2DD2E0096EEF7 /* FBSDKLoginKit.framework */; };
+		EB22FB331BC436390096EEF7 /* FacebookClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB321BC436390096EEF7 /* FacebookClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		EB22FB251BC2CA010096EEF7 /* StudentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
 		EB22FB2B1BC2DD170096EEF7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EB22FB2D1BC2DD2E0096EEF7 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		EB22FB321BC436390096EEF7 /* FacebookClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 		8DF5A75F1BBA91AE00214AC0 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
+				EB22FB311BC436240096EEF7 /* Facebook */,
 				EB22FB041BC085CB0096EEF7 /* Parse */,
 				8DF5A7601BBA91B600214AC0 /* Udacity */,
 			);
@@ -220,6 +223,14 @@
 				EB22FB151BC1A7D20096EEF7 /* LocationAddLinkViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		EB22FB311BC436240096EEF7 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				EB22FB321BC436390096EEF7 /* FacebookClient.swift */,
+			);
+			name = Facebook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +352,7 @@
 				EB22FB101BC171A90096EEF7 /* StudentTableViewController.swift in Sources */,
 				EB22FB161BC1A7D20096EEF7 /* LocationAddLinkViewController.swift in Sources */,
 				EB22FB261BC2CA010096EEF7 /* StudentCell.swift in Sources */,
+				EB22FB331BC436390096EEF7 /* FacebookClient.swift in Sources */,
 				EB22FB121BC1932B0096EEF7 /* LocationSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FBSDKCoreKit
-import FBSDKLoginKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -37,61 +35,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginFacebook(sender: UIButton) {
         activityIndicator.startAnimating()
-        var fbLoginManager:FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager.logInWithReadPermissions(["public_profile", "email"]) { result, error in
-            if error == nil {
-                if result.isCancelled {
-                    self.displayAlert("Login Aborted.")
-                } else {
-                    var fbloginresult : FBSDKLoginManagerLoginResult = result
-                    if(fbloginresult.grantedPermissions.contains("email"))
-                    {
-                        self.getFBUserData()
-                        fbLoginManager.logOut()
-                    }
+        FacebookClient.sharedInstance().facebookLogin {
+            success, errorString in
+            if success {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.activityIndicator.stopAnimating()
+                    self.performSegueWithIdentifier("studentLocation", sender: self)   
                 }
             } else {
-                self.displayAlert(error.localizedDescription)
-            }
-        }
-    }
-    
-    func getFBUserData() {
-        if let accessToken = FBSDKAccessToken.currentAccessToken() {
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, resultFB, error) -> Void in
-                if error == nil {
-                    let parameters = ["facebook_mobile": ["access_token":accessToken.tokenString]]
-                    
-                    let task = UdacityClient.sharedInstance().taskPostRequest(UdacityClient.Methods.UserSession, postParams: parameters) { result, error in
-                        if let error = error {
-                            if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
-                                self.displayAlert(error.localizedDescription)
-                            } else {
-                                self.displayAlert("Login unsuccessful.")
-                            }
-                        } else {
-                            if let userID = result.valueForKey("account")?.valueForKey("key") as? String {
-                                let studentInfomation: [String:AnyObject] = [
-                                    "uniqueKey": userID,
-                                    "firstName": resultFB.valueForKey("first_name") ?? "",
-                                    "lastName": resultFB.valueForKey("last_name") ?? ""
-                                ]
-                                
-                                UdacityClient.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
-                                
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    self.activityIndicator.stopAnimating()
-                                    self.performSegueWithIdentifier("studentLocation", sender: self)
-                                }
-                            } else {
-                                self.displayAlert("Login unsuccessful. (no user ID)")
-                            }
-                        }
-                    }
-                } else {
-                    self.displayAlert(error.localizedDescription)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.activityIndicator.stopAnimating()
                 }
-            })
+                if let errorString = errorString {
+                    self.displayAlert(errorString)
+                } else {
+                    self.displayAlert("FB Login Error")
+                }
+            }
         }
     }
     
