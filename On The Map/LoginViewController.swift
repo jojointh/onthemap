@@ -181,6 +181,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
         dispatch_async(dispatch_get_main_queue()) {
+            self.view.shakeSubview()
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
