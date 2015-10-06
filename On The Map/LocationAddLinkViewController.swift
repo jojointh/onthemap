@@ -34,7 +34,7 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
         } else {
             if let url = NSURL(string: addLinkTextView.text) {
                 if UIApplication.sharedApplication().canOpenURL(url) {
-                    var parameters = UdacityClient.sharedInstance().userInfomation.getDictionary()
+                    var parameters = UserInfo.sharedInstance().userInfomation.getDictionary()
                     parameters["mediaURL"] = addLinkTextView.text
                     parameters["mapString"] = searchString
                     parameters["latitude"] = foundLocation.coordinate.latitude

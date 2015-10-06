@@ -48,7 +48,7 @@ class FacebookClient: NSObject {
                                                     "lastName": resultFB.valueForKey("last_name") ?? ""
                                                 ]
                                                 
-                                                UdacityClient.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
+                                                UserInfo.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
                                                 
                                                 completionHandler(success: true, errorString: nil)
                                             } else {

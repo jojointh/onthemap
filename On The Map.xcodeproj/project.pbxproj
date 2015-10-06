@@ -36,6 +36,7 @@
 		EB22FB331BC436390096EEF7 /* FacebookClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB321BC436390096EEF7 /* FacebookClient.swift */; };
 		EB22FB351BC43CD10096EEF7 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB341BC43CD10096EEF7 /* UdacityConvenience.swift */; };
 		EB22FB371BC4409F0096EEF7 /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB361BC4409F0096EEF7 /* ParseConvenience.swift */; };
+		EB22FB391BC44B9D0096EEF7 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB381BC44B9D0096EEF7 /* UserInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		EB22FB321BC436390096EEF7 /* FacebookClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookClient.swift; sourceTree = "<group>"; };
 		EB22FB341BC43CD10096EEF7 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		EB22FB361BC4409F0096EEF7 /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
+		EB22FB381BC44B9D0096EEF7 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				EB22FB091BC1279F0096EEF7 /* StudentInfomation.swift */,
+				EB22FB381BC44B9D0096EEF7 /* UserInfo.swift */,
 				8DF5A75F1BBA91AE00214AC0 /* Clients */,
 			);
 			name = Model;
@@ -351,6 +354,7 @@
 				EB22FB021BC062870096EEF7 /* StudentMapViewController.swift in Sources */,
 				8DF5A71A1BB93DB400214AC0 /* LoginViewController.swift in Sources */,
 				8DF5A7641BBA922C00214AC0 /* UdacityConstants.swift in Sources */,
+				EB22FB391BC44B9D0096EEF7 /* UserInfo.swift in Sources */,
 				8DF5A7181BB93DB400214AC0 /* AppDelegate.swift in Sources */,
 				EB22FB0A1BC1279F0096EEF7 /* StudentInfomation.swift in Sources */,
 				8DF5A7621BBA91D900214AC0 /* UdacityClient.swift in Sources */,

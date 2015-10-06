@@ -48,7 +48,7 @@ extension UdacityClient {
                                         "lastName": user["last_name"] ?? ""
                                     ]
                                     
-                                    UdacityClient.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
+                                    UserInfo.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
                                     
                                     completionHandler(success: true, errorString: nil)
                                 }
