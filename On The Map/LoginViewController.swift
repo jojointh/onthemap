@@ -67,61 +67,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             activityIndicator.startAnimating()
             let postParams = ["udacity":
                 [ "username": emailTextField.text,
-                  "password": passwordTextField.text
+                    "password": passwordTextField.text
                 ]
             ]
-            let task = UdacityClient.sharedInstance().taskPostRequest(UdacityClient.Methods.UserSession, postParams: postParams) { result, error in
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.activityIndicator.stopAnimating()
-                }
-                if let error = error {
-                    if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
-                        self.displayAlert(error.localizedDescription)
-                    } else {
-                        self.displayAlert("Could not login")
+            UdacityClient.sharedInstance().udacityLogin(postParams) {
+                success, errorString in
+                if success {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.activityIndicator.stopAnimating()
+                        //clear login textfield in case of user logout
+                        self.emailTextField.text = ""
+                        self.passwordTextField.text = ""
+                        self.performSegueWithIdentifier("studentLocation", sender: self)
                     }
                 } else {
-                    if let error = result.valueForKey("error") as? String {
-                        if result.valueForKey("status") as? Int == 403 {
-                            self.displayAlert("Invalid Email or Password.")
-                        } else {
-                            self.displayAlert("Login Error")
-                        }
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.activityIndicator.stopAnimating()
+                    }
+                    if let errorString = errorString {
+                        self.displayAlert(errorString)
                     } else {
-                        //get user data
-                        if let userID = result.valueForKey("account")?.valueForKey("key") as? String {
-                            var mutableMethod: String = UdacityClient.Methods.UserData
-                            mutableMethod = UdacityClient.subtituteKeyInMethod(mutableMethod, key: UdacityClient.URLKeys.userID, value: userID)!
-                            UdacityClient.sharedInstance().taskGetRequest(mutableMethod, parameters: [String : AnyObject]()) {
-                                result, error in
-                                
-                                if let error = error {
-                                    if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
-                                        self.displayAlert(error.localizedDescription)
-                                    } else {
-                                        self.displayAlert("Could no get user data.")
-                                    }
-                                } else {
-                                    if let user = result.valueForKey("user") as? [String:AnyObject] {
-                                        let studentInfomation: [String:AnyObject] = [
-                                            "uniqueKey": userID,
-                                            "firstName": user["first_name"] ?? "",
-                                            "lastName": user["last_name"] ?? ""
-                                        ]
-                                        
-                                        UdacityClient.sharedInstance().userInfomation = StudentInformation(studentInfomation: studentInfomation)
-                                        
-                                        dispatch_async(dispatch_get_main_queue()) {
-                                            self.emailTextField.text = ""
-                                            self.passwordTextField.text = ""
-                                            self.performSegueWithIdentifier("studentLocation", sender: self)
-                                        }
-                                    }
-                                }
-                            }
-                        } else {
-                            self.displayAlert("Account data not found.")
-                        }
+                        self.displayAlert("Udacity Login Error")
                     }
                 }
             }

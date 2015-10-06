@@ -34,6 +34,7 @@
 		EB22FB2C1BC2DD170096EEF7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB22FB2B1BC2DD170096EEF7 /* FBSDKCoreKit.framework */; };
 		EB22FB2E1BC2DD2E0096EEF7 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB22FB2D1BC2DD2E0096EEF7 /* FBSDKLoginKit.framework */; };
 		EB22FB331BC436390096EEF7 /* FacebookClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB321BC436390096EEF7 /* FacebookClient.swift */; };
+		EB22FB351BC43CD10096EEF7 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22FB341BC43CD10096EEF7 /* UdacityConvenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		EB22FB2B1BC2DD170096EEF7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EB22FB2D1BC2DD2E0096EEF7 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EB22FB321BC436390096EEF7 /* FacebookClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookClient.swift; sourceTree = "<group>"; };
+		EB22FB341BC43CD10096EEF7 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			children = (
 				8DF5A7611BBA91D900214AC0 /* UdacityClient.swift */,
 				8DF5A7631BBA922C00214AC0 /* UdacityConstants.swift */,
+				EB22FB341BC43CD10096EEF7 /* UdacityConvenience.swift */,
 			);
 			name = Udacity;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				8DF5A7181BB93DB400214AC0 /* AppDelegate.swift in Sources */,
 				EB22FB0A1BC1279F0096EEF7 /* StudentInfomation.swift in Sources */,
 				8DF5A7621BBA91D900214AC0 /* UdacityClient.swift in Sources */,
+				EB22FB351BC43CD10096EEF7 /* UdacityConvenience.swift in Sources */,
 				EB22FB081BC085F70096EEF7 /* ParseConstants.swift in Sources */,
 				EB22FB101BC171A90096EEF7 /* StudentTableViewController.swift in Sources */,
 				EB22FB161BC1A7D20096EEF7 /* LocationAddLinkViewController.swift in Sources */,
