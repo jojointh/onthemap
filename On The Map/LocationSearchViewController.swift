@@ -17,10 +17,6 @@ class LocationSearchViewController: UIViewController, UITextViewDelegate{
     let placeholder = "Enter Your Location Here"
     let foundLocation = MKPointAnnotation()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         locationTextField.text = placeholder
         locationTextField.textColor = UIColor.lightGrayColor()

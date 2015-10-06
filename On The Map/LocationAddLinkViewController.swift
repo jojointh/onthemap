@@ -19,10 +19,6 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
     var foundLocation = MKPointAnnotation()
     var searchString = ""
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         addLinkTextView.text = placeholder
         addLinkTextView.textColor = UIColor.lightGrayColor()

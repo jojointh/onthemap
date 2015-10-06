@@ -11,10 +11,6 @@ import FBSDKLoginKit
 
 class StudentTableViewController: UITableViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction func logout(sender: UIBarButtonItem) {
         UdacityClient.sharedInstance().taskDeleteRequest(UdacityClient.Methods.UserSession) {
             result, error in
