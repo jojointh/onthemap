@@ -16,40 +16,35 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         var annotations = [MKPointAnnotation]()
-        let parameters = ["limit": 100, "order": "-updatedAt"]
-        let task = ParseClient.sharedInstance().taskGetRequest(ParseClient.Methods.StudentLocation, parameters: parameters) { result, error in
-            if let error = error {
-                if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
-                    self.displayAlert(error.localizedDescription)
-                } else {
-                    self.displayAlert("Unable to show student location.")
+        ParseClient.sharedInstance().getStudentLocation() {
+            studentLocationList, errorString in
+            if let studentLocationList = studentLocationList {
+                for student in studentLocationList {
+                    let studentInformation = StudentInformation(studentInfomation: student)
+                    ParseClient.sharedInstance().studentInformationList.append(studentInformation)
+                    
+                    // create annotation point
+                    let lat = CLLocationDegrees(studentInformation.latitude)
+                    let long = CLLocationDegrees(studentInformation.longitude)
+                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                    let first = studentInformation.firstName
+                    let last = studentInformation.lastName
+                    let mediaURL = studentInformation.mediaURL
+                    var annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    annotation.title = "\(first) \(last)"
+                    annotation.subtitle = mediaURL
+                    annotations.append(annotation)
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.mapView.addAnnotations(annotations)
                 }
             } else {
-                if let error = result.valueForKey("error") as? String {
-                    self.displayAlert("Unable to show student location. (\(error))")
+                if let errorString = errorString {
+                    self.displayAlert(errorString)
                 } else {
-                    for student in result.valueForKey("results") as! [[String: AnyObject]] {
-                        let studentInformation = StudentInformation(studentInfomation: student)
-                        ParseClient.sharedInstance().studentInformationList.append(studentInformation)
-                        
-                        // create annotation point
-                        let lat = CLLocationDegrees(studentInformation.latitude)
-                        let long = CLLocationDegrees(studentInformation.longitude)
-                        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                        let first = studentInformation.firstName
-                        let last = studentInformation.lastName
-                        let mediaURL = studentInformation.mediaURL
-                        var annotation = MKPointAnnotation()
-                        annotation.coordinate = coordinate
-                        annotation.title = "\(first) \(last)"
-                        annotation.subtitle = mediaURL
-                        annotations.append(annotation)
-                    }
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.mapView.addAnnotations(annotations)
-                    }
+                    self.displayAlert("Get student location unsuccessful.")
                 }
             }
         }

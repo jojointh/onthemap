@@ -40,21 +40,17 @@ class LocationAddLinkViewController: UIViewController, UITextViewDelegate {
                     parameters["latitude"] = foundLocation.coordinate.latitude
                     parameters["longitude"] = foundLocation.coordinate.longitude
                     
-                    ParseClient.sharedInstance().taskPostRequest(ParseClient.Methods.StudentLocation, postParams: parameters) {
-                        result, error in
-                        if let error = error {
-                            if error.domain == NSURLErrorDomain || error.domain == "parsingJSON" {
-                                self.displayAlert(error.localizedDescription)
-                            } else {
-                                self.displayAlert("Could no save location.")
+                    ParseClient.sharedInstance().postStudentLocation(parameters) {
+                        success, errorString in
+                        if success {
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.presentingViewController!.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
                             }
                         } else {
-                            if let error = result.valueForKey("error") as? String {
-                                self.displayAlert(error)
+                            if let errorString = errorString {
+                                self.displayAlert(errorString)
                             } else {
-                                dispatch_async(dispatch_get_main_queue()) {
-                                    self.presentingViewController!.presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
-                                }
+                                self.displayAlert("Post location error.")
                             }
                         }
                     }
