@@ -11,6 +11,41 @@ import FBSDKLoginKit
 
 class StudentTableViewController: UITableViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //custom navigation button
+        let reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "reload:")
+        let pinButton = UIBarButtonItem(image: UIImage(named: "pinButton"), style: UIBarButtonItemStyle.Plain, target: self, action: "addPin:")
+        navigationItem.rightBarButtonItems = [reloadButton, pinButton]
+    }
+    
+    func reload(sender: AnyObject) {
+        AppData.sharedInstance().studentInformationList.removeAll()
+        ParseClient.sharedInstance().getStudentLocation() {
+            studentLocationList, errorString in
+            if let studentLocationList = studentLocationList {
+                for student in studentLocationList {
+                    let studentInformation = StudentInformation(studentInfomation: student)
+                    AppData.sharedInstance().studentInformationList.append(studentInformation)
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                }
+            } else {
+                if let errorString = errorString {
+                    self.displayAlert(errorString)
+                } else {
+                    self.displayAlert("Get student location unsuccessful.")
+                }
+            }
+        }
+    }
+    
+    func addPin(sender: AnyObject) {
+        performSegueWithIdentifier("showLocationSelect", sender: self)
+    }
+    
     @IBAction func logout(sender: UIBarButtonItem) {
         UdacityClient.sharedInstance().taskDeleteRequest(UdacityClient.Methods.UserSession) {
             result, error in

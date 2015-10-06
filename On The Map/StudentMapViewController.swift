@@ -16,6 +16,18 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //custom navigation button
+        let reloadButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "reload:")
+        let pinButton = UIBarButtonItem(image: UIImage(named: "pinButton"), style: UIBarButtonItemStyle.Plain, target: self, action: "addPin:")
+        navigationItem.rightBarButtonItems = [reloadButton, pinButton]
+        
+        mapLoadPin()
+    }
+    
+    func mapLoadPin() {
+        mapView.removeAnnotations(mapView.annotations)
+        AppData.sharedInstance().studentInformationList.removeAll()
         var annotations = [MKPointAnnotation]()
         ParseClient.sharedInstance().getStudentLocation() {
             studentLocationList, errorString in
@@ -48,6 +60,14 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
                 }
             }
         }
+    }
+    
+    func reload(sender: AnyObject) {
+        mapLoadPin()
+    }
+    
+    func addPin(sender: AnyObject) {
+        performSegueWithIdentifier("showLocationSelect", sender: self)
     }
     
     @IBAction func logout(sender: UIBarButtonItem) {

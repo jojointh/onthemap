@@ -303,13 +303,11 @@
                                 <action selector="logout:" destination="LjE-dV-3tq" id="iQl-Hp-TJ1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="pinButton" id="4hH-bg-FMq">
-                            <connections>
-                                <segue destination="xxB-wC-HFO" kind="presentation" id="qMH-Rr-eA4"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="xxB-wC-HFO" kind="presentation" identifier="showLocationSelect" id="Nzb-Ag-FhZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dV8-eO-DfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -327,7 +325,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-yD-mbD">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L9w-yD-mbD">
                                 <rect key="frame" x="0.0" y="215" width="600" height="267"/>
                                 <color key="backgroundColor" red="0.24313725490196078" green="0.4392156862745098" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -356,7 +354,7 @@
                                     <action selector="findLocation:" destination="xxB-wC-HFO" eventType="touchUpInside" id="4Z3-Sc-x2E"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZj-Ac-fjw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZj-Ac-fjw">
                                 <rect key="frame" x="257" y="135" width="86" height="36"/>
                                 <fontDescription key="fontDescription" name="Roboto-Thin" family="Roboto" pointSize="30"/>
                                 <color key="textColor" red="0.054901960784313725" green="0.1803921568627451" blue="0.35294117647058826" alpha="1" colorSpace="calibratedRGB"/>
@@ -562,14 +560,10 @@
                                 <action selector="logout:" destination="uj9-nR-kV1" id="LwK-Nh-bTY"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="pinButton" id="wPk-sM-jHt">
-                            <connections>
-                                <segue destination="xxB-wC-HFO" kind="presentation" id="Pnb-5j-TmZ"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="AEZ-yn-gQv" id="9St-6p-2Z2"/>
+                        <segue destination="xxB-wC-HFO" kind="presentation" identifier="showLocationSelect" id="CBe-Bm-fOV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSt-gG-rY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -642,6 +636,6 @@
         <image name="udacityLogo" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qMH-Rr-eA4"/>
+        <segue reference="CBe-Bm-fOV"/>
     </inferredMetricsTieBreakers>
 </document>
