@@ -35,3 +35,16 @@ struct StudentInformation {
             "longitude": self.longitude]
     }
 }
+
+class AppData: NSObject {
+
+    var userInfomation = StudentInformation(dictionary: [String:AnyObject]())
+    var studentInformationList = [StudentInformation]()
+
+    class func sharedInstance() -> AppData {
+        struct Singleton {
+            static var sharedInstance = AppData()
+        }
+        return Singleton.sharedInstance
+    }
+}
